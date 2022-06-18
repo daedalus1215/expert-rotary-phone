@@ -1,0 +1,14 @@
+{
+  "name": "questions",
+  "version": "1.0.0",
+  "description": "",
+  "main": "two_pointer.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "jest": "^28.1.1"
+  }
+}
