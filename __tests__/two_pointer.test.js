@@ -22,12 +22,39 @@ const twoPointer = (theArray, theTarget) => {
     return null;
 }
 
+
+/**
+ * 
+ * @param {Number[]} theArray The array of numbers
+ * @param {Number} theTarget the target number we want to find.
+ * @returns null| Number[]
+ */
+const twoPointerPerformant = (theArray, theTarget) => {
+    if (theArray.length === 0 || theArray.length === 1) {
+        return null;
+    }
+
+    let theHash = {};
+    for (let i = 0; i < theArray.length; i++) { // - [10, 2], 12
+        const remainder = theTarget - theArray[i];
+        console.log('remainder', remainder);
+        console.log('theHash[remainder]', theHash[''+remainder])
+        if (theHash[''+remainder] !== undefined) {
+            return [theHash[remainder], i];
+        }
+        theHash = { ...theHash, [theArray[i]]: i };
+        console.log('theHash - final', theHash)
+    }
+
+    return null;
+}
+
 describe('two_pointer', () => {
     it('should return null if array is empty', () => {
         // Arrange
 
         // Act
-        const actual = twoPointer([], 12);
+        const actual = twoPointerPerformant([], 12);
 
         // Assert
         expect(actual).toEqual(null);
@@ -37,7 +64,7 @@ describe('two_pointer', () => {
         // Arrange
 
         // Act
-        const actual = twoPointer([1], 12);
+        const actual = twoPointerPerformant([1], 12);
 
         // Assert
         expect(actual).toEqual(null);
@@ -47,7 +74,7 @@ describe('two_pointer', () => {
         // Arrange
 
         // Act
-        const actual = twoPointer([1,2], 12);
+        const actual = twoPointerPerformant([1, 2], 12);
 
         // Assert
         expect(actual).toEqual(null);
@@ -57,10 +84,10 @@ describe('two_pointer', () => {
         // Arrange
 
         // Act
-        const actual = twoPointer([10, 2], 12);
+        const actual = twoPointerPerformant([10, 2], 12);
 
         // Assert
-        expect(actual).toEqual([0,1]);
+        expect(actual).toEqual([0, 1]);
     });
 
 
@@ -68,7 +95,7 @@ describe('two_pointer', () => {
         // Arrange
 
         // Act
-        const actual = twoPointer([1, 2, 10], 12);
+        const actual = twoPointerPerformant([1, 2, 10], 12);
 
         // Assert
         expect(actual).toEqual([1, 2]);
@@ -79,9 +106,9 @@ describe('two_pointer', () => {
         // Arrange
 
         // Act
-        const actual = twoPointer([1, 2, 9, 2, 6, 4, 100, 10], 12);
+        const actual = twoPointerPerformant([1, 2, 9, 2, 6, 4, 100, 10], 12);
 
         // Assert
-        expect(actual).toEqual([1, 7]);
+        expect(actual).toEqual([3, 7]);
     });
 });
