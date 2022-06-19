@@ -37,7 +37,7 @@ const twoPointerPerformant = (theArray, theTarget) => {
     let theHash = {};
     for (let i = 0; i < theArray.length; i++) { 
         const remainder = theTarget - theArray[i];
-        if (theHash[''+remainder] !== undefined) {
+        if (theHash[remainder] !== undefined) {
             return [theHash[remainder], i];
         }
         theHash = { ...theHash, [theArray[i]]: i };
