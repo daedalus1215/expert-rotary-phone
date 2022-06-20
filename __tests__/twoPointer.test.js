@@ -5,7 +5,7 @@
  * @param {Number} theTarget the target number we want to find.
  * @returns null| Number[]
  */
-const twoPointer = (theArray, theTarget) => {
+const twoPointerBruteForce = (theArray, theTarget) => {
     if (theArray.length === 0 || theArray.length === 1) {
         return null;
     }
@@ -35,7 +35,7 @@ const twoPointerPerformant = (theArray, theTarget) => {
     }
 
     let theHash = {};
-    for (let i = 0; i < theArray.length; i++) { 
+    for (let i = 0; i < theArray.length; i++) {
         const remainder = theTarget - theArray[i];
         if (theHash[remainder] !== undefined) {
             return [theHash[remainder], i];

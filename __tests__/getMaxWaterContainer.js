@@ -3,7 +3,7 @@
  * @param {Number[]} numbers 
  * @returns 
  */
-const getMaxWaterContainer = (numbers) => {
+const getMaxWaterContainerBruteForce = (numbers) => {
     if (numbers.length === 0 || numbers.length === 1) {
         return 0;
     }
@@ -43,20 +43,20 @@ const getMaxWaterContainerPerformant = (numbers) => {
 
 describe('getMaxWaterContainer', () => {
     it('should return null, when array is not long enough', () => {
-        const actual = getMaxWaterContainer([]);
+        const actual = getMaxWaterContainerBruteForce([]);
         expect(actual).toEqual(0);
     });
     it('should return null, when array is not long enough', () => {
-        const actual = getMaxWaterContainer([1]);
+        const actual = getMaxWaterContainerBruteForce([1]);
         expect(actual).toEqual(0);
     });
 
     it('should return 28, with following example', () => {
-        const actual = getMaxWaterContainer([7, 1, 2, 3, 9]);
+        const actual = getMaxWaterContainerBruteForce([7, 1, 2, 3, 9]);
         expect(actual).toEqual(28);
     });
     it('should return 28, with following example', () => {
-        const actual = getMaxWaterContainer([1, 8, 6, 2, 5, 4, 8, 3, 7]);
+        const actual = getMaxWaterContainerBruteForce([1, 8, 6, 2, 5, 4, 8, 3, 7]);
         expect(actual).toEqual(49);
     });
 
