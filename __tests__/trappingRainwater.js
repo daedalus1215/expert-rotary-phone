@@ -6,17 +6,29 @@
  */
 const trappingRainwaterBruteForce = (nums) => {
     let totalWater = 0;
-    let pointer = 0;
-    let maxL = 0;
-    let maxR = 0;
 
-    while (pointer < nums.length) {
+    for (let p = 0; p < nums.length; p++) {
+        let leftP = p;
+        let rightP = p;
+        let maxL = 0;
+        let maxR = 0;
 
+        while (leftP >= 0) {
+            maxL = Math.max(maxL, nums[leftP]);
+            leftP--;
+        }
 
+        while (rightP < nums.length) {
+            maxR = Math.max(maxR, nums[rightP]);
+            rightP++;
+        }
 
-        pointer++;
+        const currentWater = Math.min(maxL, maxR) - nums[p];
+
+        if (currentWater > 0) {
+            totalWater += currentWater;
+        }
     }
-
 
     return totalWater;
 };
