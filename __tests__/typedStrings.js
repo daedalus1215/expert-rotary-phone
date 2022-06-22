@@ -1,31 +1,12 @@
 
-
 /**
  * 
  * @param {String} a 
  * @param {String} t 
  */
 const typedStrings = (first, second) => {
-    let left = [],
-        right = [];
-
-    for (let i = 0; i < first.length; i++) {
-        const character = first.charAt(i)
-        if (character === "#") {
-            left.pop();
-        } else {
-            left.push(character);
-        }
-    }
-
-    for (let i = 0; i < second.length; i++) {
-        const character = second.charAt(i)
-        if (character === "#") {
-            right.pop();
-        } else {
-            right.push(character);
-        }
-    }
+    const left = buildArray(first);
+    const right = buildArray(second);
 
     if (left.length === right.length) {
         for (let i = 0; i < left.length; i++) {
@@ -40,6 +21,20 @@ const typedStrings = (first, second) => {
     return true;
 };
 
+const buildArray = (typedStrings) => {
+    let theArray = [];
+
+    for (let i = 0; i < typedStrings.length; i++) {
+        const character = typedStrings.charAt(i)
+        if (character === "#") {
+            theArray.pop();
+        } else {
+            theArray.push(character);
+        }
+    }
+
+    return theArray;
+}
 
 describe('typedStrings', () => {
     it('when given ab#z and az#z return true', () => {
