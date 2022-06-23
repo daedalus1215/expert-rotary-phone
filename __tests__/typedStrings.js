@@ -38,45 +38,47 @@ const buildArray = (typedStrings) => {
 
 
 const typedStringsPerformance = (first, second) => {
-    first = mutateStrings(first);
-    second = mutateStrings(second);
-    console.log('first', first);
-    console.log('second', second);
-    if (first.length === second.length) {
-        for (let i = 0; i < first.length; i++) {
-            if (first[i] !== second[i]) {
+    let p1 = first.length - 1,
+        p2 = second.length - 1;
+
+    while (p1 >= 0 || p2 >= 0) {
+
+        if (first[p1] === '#' || second[p2] === '#') {
+            if (first[p1] === '#') {
+                let backcount = 2;
+
+                while (backcount > 0) {
+                    p1--;
+                    backcount--;
+                    if (first[p1] === '#') {
+                        backcount = backcount + 2;
+                    }
+                }
+            }
+
+            if (second[p2] === '#') {
+                let backcount = 2;
+
+                while (backcount > 0) {
+                    p2--;
+                    backcount--;
+                    if (second[p2] === '#') {
+                        backcount = backcount + 2;
+                    }
+                }
+            }
+        } else {
+            if (first.charAt(p1) !== second.charAt(p2)) {
                 return false;
+            } else {
+                p1--;
+                p2--;
             }
         }
-    } else {
-        return false;
     }
 
     return true;
 };
-
-const mutateStrings = (typedStrings) => {
-    let p1 = 0, p2 = typedStrings.length - 1;
-
-    while (p1 < p2) {
-        const fir = typedStrings.charAt(p1);
-        const sec = typedStrings.charAt(p2);
-        const shouldMoveFir = Math.random() < 0.5;
-
-        if (fir === '#') {
-            typedStrings = typedStrings.slice(0, p1 - 1) + typedStrings.slice(p1 + 1);
-        } else {
-            if (shouldMoveFir) p1++;
-        }
-        if (sec === '#') {
-            typedStrings = typedStrings.slice(0, p2 - 1) + typedStrings.slice(p2 +1)
-        } else {
-            if (!shouldMoveFir) p2--;
-        }
-    }
-
-    return typedStrings;
-}
 
 describe('typedStrings', () => {
     describe('typedStringsBruteForce', () => {
