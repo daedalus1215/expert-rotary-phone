@@ -7,7 +7,6 @@ const isValidPalindromeOuterToInner = (s) => {
     let left = 0; right = s.length - 1;
     while (left < right) {
         if (s[left] !== s[right]) {
-            console.log(`outer to inner - not even string - ${s}, left:${left} and right: ${right}`)
             return false;
         }
 
@@ -30,7 +29,6 @@ const isValidPalindromeInnerToOuter = (s) => {
     let left = startingPoint; right = startingPoint;
     while (left >= 0 && right < s.length) {
         if (s[left] !== s[right]) {
-            console.log(`inner to outer - not even string - ${s}, left:${left} and right: ${right}`)
             return false;
         }
 
@@ -60,7 +58,6 @@ const normalizeString = s => s.replace('/[^A-Za-z0-9]/g', '').toLowerCase();
 const isOdd = s => s.length % 2 === 1;
 const getCenterPoint = (s) => {
     const center = Math.max(s.length / 2) - .5;
-    console.log('center', center);
     return center;
 }
 
@@ -92,7 +89,6 @@ const findOddDiscrepencies = s => {
 const findEvenDiscrepencies = (s) => {
     s = s.replace('/[^A-Za-z0-9]/g', '').toLowerCase();
     let left = 0; right = s.length - 1;
-    console.log('dis - right', right)
     while (left < right) {
         if (s[left] !== s[right]) {
             return [left, right];
@@ -109,36 +105,72 @@ const isAlmostPalindrome = (s) => {
     s = normalizeString(s);
 
     if (isOdd(s)) {
-        console.log('isOdd')
         const disc = findOddDiscrepencies(s);
         if (disc.length === 2) {
-            //@TODO: Can make this more performant by iterating over both strings at the same time
-            if (isValidPalindromeInnerToOuter(getNewString(s, disc[0]))) return true; // we know it's even here, since it was odd and we subtracted one.
-            if (isValidPalindromeInnerToOuter(getNewString(s, disc[1]))) return true; // we know it's even here, since it was odd and we subtracted one.
+            const firstNewString = getNewString(s, disc[0]);
+            const secondNewString = getNewString(s, disc[1]);
+            const startingPoint = getCenterPoint(firstNewString);
+
+            let left = startingPoint; right = startingPoint;
+            let leftFailure = false, rightFailure = false;
+            while (left >= 0 && right < s.length) {
+                if (leftFailure === false && firstNewString[left] !== firstNewString[right]) {
+                    leftFailure = true;
+                }
+
+                if (rightFailure === false && secondNewString[left] !== secondNewString[right]) {
+                    rightFailure = true;
+                }
+
+                if (leftFailure && rightFailure) {
+                    return false;
+                }
+
+                left--;
+                right++;
+            }
+
+            return true;
         } else {
             return true; // there was no discrepencies, so it is a palindrome!
         }
     } else {
-        console.log('isEven')
         const disc = findEvenDiscrepencies(s);
-        console.log('disc', disc)
         if (disc.length === 2) {
-            //@TODO: Can make this more performant by iterating over both strings at the same time
-            if (isValidPalindromeInnerToOuter(getNewString(s, disc[0]))) return true; // we know it's odd here, since it was even and we subtracted one.
-            if (isValidPalindromeInnerToOuter(getNewString(s, disc[1]))) return true; // we know it's odd here, since it was even and we subtracted one.
+            const firstNewString = getNewString(s, disc[0]);
+            const secondNewString = getNewString(s, disc[1]);
+            const startingPoint = getCenterPoint(firstNewString);
+
+            let left = startingPoint; right = startingPoint;
+            let leftFailure = false, rightFailure = false;
+            while (left >= 0 && right < s.length) {
+                if (leftFailure === false && firstNewString[left] !== firstNewString[right]) {
+                    leftFailure = true;
+                }
+
+                if (rightFailure === false && secondNewString[left] !== secondNewString[right]) {
+                    rightFailure = true;
+                }
+
+
+                if (leftFailure && rightFailure) {
+                    return false;
+                }
+
+                left--;
+                right++;
+            }
+
+            return true;
         } else {
             return true; // there was no discrepencies, so it is a palindrome!
         }
     }
-    console.log('we got to the end')
-    return false;
 }
 
 
 const getNewString = (s, index) => {
-    console.log('s is ', s)
     const yes = s.slice(0, index) + s.slice(index + 1, s.length);
-    console.log('yes', yes);
     return yes;
 }
 
@@ -155,7 +187,7 @@ describe('palindrome', () => {
         it('should return true', () => {
             expect(isValidPalindromeOuterToInner('abcba')).toEqual(true);
         });
-    });   
+    });
 
     describe('isAlmostPalindrome', () => {
         it('should return true', () => {
