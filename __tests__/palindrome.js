@@ -177,42 +177,98 @@ const getNewString = (s, index) => {
 
 
 
-describe('palindrome', () => {
-    describe('isValidPalindromeOuterToInner', () => {
-        it('should return true', () => {
-            expect(isValidPalindromeOuterToInner('abccba')).toEqual(true);
-        });
-    });
-    describe('isValidPalindromeInnerToOuter', () => {
-        it('should return true', () => {
-            expect(isValidPalindromeOuterToInner('abcba')).toEqual(true);
-        });
-    });
+const performantAlmostPalindrome = s => {
+    s = normalizeString(s);
+    let left = 0, right = s.length - 1;
+    while (left < right) {
+        if (s[left] !== s[right]) {
+            return validSubPalindrome(s, left + 1, right) || validSubPalindrome(s, left, right -1);
+        }
+        left++;
+        right--;
+    }
 
-    describe('isAlmostPalindrome', () => {
+    return true;
+}
+
+const validSubPalindrome = (s, left, right) => {
+    while (left < right) {
+        if (s[left] !== s[right]) {
+            return false;
+        }
+        left++;
+        right--;
+    }
+
+    return true;
+}
+
+
+describe('palindrome', () => {
+    // describe('isValidPalindromeOuterToInner', () => {
+    //     it('should return true', () => {
+    //         expect(isValidPalindromeOuterToInner('abccba')).toEqual(true);
+    //     });
+    // });
+    // describe('isValidPalindromeInnerToOuter', () => {
+    //     it('should return true', () => {
+    //         expect(isValidPalindromeOuterToInner('abcba')).toEqual(true);
+    //     });
+    // });
+
+    // describe('isAlmostPalindrome', () => {
+    //     it('should return true', () => {
+    //         expect(isAlmostPalindrome('abcba')).toEqual(true);
+    //     });
+    //     it('should return true', () => {
+    //         expect(isAlmostPalindrome('abad')).toEqual(true);
+    //     });
+    //     it('should return true', () => {
+    //         expect(isAlmostPalindrome('daba')).toEqual(true);
+    //     });
+    //     it('should return true', () => {
+    //         expect(isAlmostPalindrome('aba')).toEqual(true);
+    //     });
+    //     it('should return true', () => {
+    //         expect(isAlmostPalindrome('raceacar')).toEqual(true);
+    //     });
+    //     it('should return true', () => {
+    //         expect(isAlmostPalindrome('abccdba')).toEqual(true);
+    //     });
+    //     it('should return true', () => {
+    //         expect(isAlmostPalindrome('abcdefdba')).toEqual(false);
+    //     });
+    //     it('should return true', () => {
+    //         expect(isAlmostPalindrome('abcba')).toEqual(true);
+    //     });
+    // });
+
+
+
+    describe('performantAlmostPalindrome', () => {
         it('should return true', () => {
-            expect(isAlmostPalindrome('abcba')).toEqual(true);
+            expect(performantAlmostPalindrome('abcba')).toEqual(true);
         });
         it('should return true', () => {
-            expect(isAlmostPalindrome('abad')).toEqual(true);
+            expect(performantAlmostPalindrome('abad')).toEqual(true);
         });
         it('should return true', () => {
-            expect(isAlmostPalindrome('daba')).toEqual(true);
+            expect(performantAlmostPalindrome('daba')).toEqual(true);
         });
         it('should return true', () => {
-            expect(isAlmostPalindrome('aba')).toEqual(true);
+            expect(performantAlmostPalindrome('aba')).toEqual(true);
         });
         it('should return true', () => {
-            expect(isAlmostPalindrome('raceacar')).toEqual(true);
+            expect(performantAlmostPalindrome('raceacar')).toEqual(true);
         });
         it('should return true', () => {
-            expect(isAlmostPalindrome('abccdba')).toEqual(true);
+            expect(performantAlmostPalindrome('abccdba')).toEqual(true);
         });
         it('should return true', () => {
-            expect(isAlmostPalindrome('abcdefdba')).toEqual(true);
+            expect(performantAlmostPalindrome('abcdefdba')).toEqual(false);
         });
         it('should return true', () => {
-            expect(isAlmostPalindrome('abcba')).toEqual(true);
+            expect(performantAlmostPalindrome('abcba')).toEqual(true);
         });
     });
 });
