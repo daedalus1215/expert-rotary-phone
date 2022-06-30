@@ -39,32 +39,9 @@ class ListNode {
 
 describe('linkedListMNReversals', () => {
     it('reverseBetween', () => {
-        const linkedList = [8,7,6,5,4,3,2,1].reduce((acc, val) => new ListNode(val, acc), null);
+        const linkedList = [8, 7, 6, 5, 4, 3, 2, 1].reduce((acc, val) => new ListNode(val, acc), null);
         const actual = reverseBetween(linkedList, 1, 6);
-        expect(actual).toEqual({
-            "next": {
-                "next":
-                {
-                    "next":
-                    {
-                        "next":
-                        {
-                            "next":
-                            {
-                                "next":
-                                {
-                                    "next":
-                                    {
-                                        "next": null,
-                                        "val": 1
-                                    }, "val": 6
-                                }, "val": 5
-                            }, "val": 4
-                        }, "val": 3
-                    }, "val": 2
-                }, "val": 7
-            }, "val": 8
-        });
+        expect(actual).toEqual({ "next": { "next": { "next": { "next": { "next": { "next": { "next": { "next": null, "val": 8 }, "val": 7 }, "val": 1 }, "val": 2 }, "val": 3 }, "val": 4 }, "val": 5 }, "val": 6 });
     });
 })
 
