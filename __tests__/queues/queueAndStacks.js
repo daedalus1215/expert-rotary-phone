@@ -10,8 +10,11 @@ class QueueAndStacks {
 
     };
 
+    /**
+     * time = o(n)
+     * @returns 
+     */
     queue = () => {
-
         if (this.stacks2.length > 0) {
             return this.stacks2.pop();
         } else {
@@ -23,10 +26,10 @@ class QueueAndStacks {
     };
 
     /**
-     * 
+     * time = O(1)
      * @param {number} item to push onto a stack
      */
-    add = (item) => {
+    add = (item) => { 
         this.stacks.push(item)
     };
 }
