@@ -22,3 +22,8 @@ const tortoiseAndHare = head => {
     return p1;
 
 }
+
+
+describe.skip('Skipping this for now', () => {
+    it('skipping', () => {});
+});

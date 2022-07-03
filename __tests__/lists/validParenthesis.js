@@ -10,8 +10,7 @@ const validParenthesis = (s) => {
     for (let i = list.length - 1; i >= 0; i--) {
         if (list[i] === '(') {
             if (lastSeen.length === 0) {
-                console.log('are we getting here')
-                list.remove(i);
+                list.splice(i, 1);
             } else {
                 lastSeen.pop();
             }
@@ -26,14 +25,8 @@ const validParenthesis = (s) => {
         return list.join("");
     }
 
-    console.log('lastSeenList', lastSeen)
-    let removedItemYet = false;
     for (let i = 0; i < lastSeen.length; i++) {
-        console.log('a - what are you list,', list)
-        
-        console.log('pop', lastSeen[i])
         list.splice(lastSeen[i], 1);
-        console.log('b - what are you list,', list)
     }
 
     return list.join('');
@@ -43,5 +36,21 @@ const validParenthesis = (s) => {
 describe('validParenthesis', () => {
     it('should return abcs if the value is a))bcs', () => {
         expect(validParenthesis('a))bcs')).toEqual('abcs');
+    });
+
+    it('should return abcs if the value is a))bcs', () => {
+        expect(validParenthesis('a)bcs')).toEqual('abcs');
+    });
+
+    it('should return (a)bcs if the value is (a)bcs', () => {
+        expect(validParenthesis('(a)bcs')).toEqual('(a)bcs');
+    });
+
+    it('should return (a)b)cs if the value is (a)bcs', () => {
+        expect(validParenthesis('(a)b)cs')).toEqual('(a)bcs');
+    });
+
+    it('should return (ab(c)s if the value is (a)bcs', () => {
+        expect(validParenthesis('(a)b)cs')).toEqual('(a)bcs');
     });
 })

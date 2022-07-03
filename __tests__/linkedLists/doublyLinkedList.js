@@ -42,7 +42,7 @@ const printListMulti = head => {
         return;
     }
 
-    console.log(head.val)
+    // console.log(head.val)
 
     if (head.child) {
         printListMulti(head.child);
@@ -56,7 +56,7 @@ const printList = head => {
         return;
     }
 
-    console.log(head.val);
+    // console.log(head.val);
 
     printList(head.next);
 }
@@ -94,7 +94,7 @@ var flatten = function (head) {
 describe('doublyLinkedList', () => {
     it('', () => {
         printListMulti(multiLinkedList);
-        console.log('after flatten');
+        // console.log('after flatten');
         printList(flatten(multiLinkedList));
     });
 });
