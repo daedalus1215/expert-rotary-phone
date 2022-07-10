@@ -1,14 +1,12 @@
 const TreeNode = require('../../src/TreeNode');
 
 const levelOrderBinaryTree = (root) => {
-    let res = [], q = [root];
-    console.log('q.length', q.length)
+    let res = [],
+        q = [root];
     while (q.length) {
-        console.log('q.length', q.length)
         let length = q.length, count = 0;
         const currentLevelValues = [];
         while (count < length) {
-            console.log('q.length', q.length)
             const currentNode = q.shift();
             currentLevelValues.push(currentNode.value);
             if (currentNode.left) {
