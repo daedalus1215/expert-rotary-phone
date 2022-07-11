@@ -23,7 +23,7 @@ const sort = (array, k) => {
 
     while (rightIndex !== -1) {
         results[1] = rightIndex;
-        rightIndex = binarySearch(array, k, rightIndex +1, array.length -1);
+        rightIndex = binarySearch(array, k, rightIndex + 1, array.length - 1);
     }
     // while (leftIndex > 0 && rightIndex <= max) {
 
@@ -63,7 +63,7 @@ describe('startAndEndOfTargetInSortedArray', () => {
         expect(sort([1, 2, 3, 4, 5, 5, 5, 6, 7], 8)).toEqual([-1, -1]);
     });
     it('should return 7, when value is 6 in the array, since it is a single index', () => {
-        expect(sort([1, 2, 3, 4, 5, 5, 5, 6, 7], 6)).toEqual([7,7]);
+        expect(sort([1, 2, 3, 4, 5, 5, 5, 6, 7], 6)).toEqual([7, 7]);
     });
     it('should return [4,6], when value is 5 in the array', () => {
         expect(sort([1, 2, 3, 4, 5, 5, 5, 6, 7], 5)).toEqual([4, 6]);
