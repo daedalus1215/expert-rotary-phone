@@ -6,6 +6,7 @@ const rightSideViewBFS = root => {
     const result = [];
     const queue = [root];
     while (queue.length) {
+        console.log('queue.length is', queue.length)
         let length = queue.length;
         let count = 0;
         let currentNode;
@@ -26,8 +27,8 @@ const rightSideViewBFS = root => {
 }
 
 
-describe('', () => {
-    it('', () => {
+describe('rightSideViewBFS', () => {
+    it('should return [1,3,6,7,8] when given the following TreeNode: [2, 3, 4, 5, null, 6, null, 7, null, null, null, null, 8, null, null, null]', () => {
         const treeNode = new TreeNode(1);
         treeNode.insert([2, 3, 4, 5, null, 6, null, 7, null, null, null, null, 8, null, null, null]);
         const actual = rightSideViewBFS(treeNode);
