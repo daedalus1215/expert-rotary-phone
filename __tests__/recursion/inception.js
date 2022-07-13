@@ -5,7 +5,6 @@ const inception = () => {
     }
 
     counter++;
-    console.log('counter', counter)
     return inception(); // recursive case
 }
 

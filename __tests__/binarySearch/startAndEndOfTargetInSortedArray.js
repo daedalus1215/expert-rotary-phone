@@ -11,11 +11,7 @@ const sort = (array, k) => {
     }
     leftIndex = mid;
     rightIndex = mid;
-    console.log('mid', mid);
-    console.log('leftIndex', leftIndex);
-    console.log('rightIndex', rightIndex);
-    console.log('what are you for leftyIndex?', binarySearch(array, k, 0, leftIndex));
-
+    
     while (leftIndex !== -1) {
         results[0] = leftIndex;
         leftIndex = binarySearch(array, k, 0, leftIndex - 1);
