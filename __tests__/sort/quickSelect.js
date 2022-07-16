@@ -41,7 +41,7 @@ describe('quickSelect', () => {
     it('should select ', () => {
         let theArray = [6, 5, 3, 8, 7, 2, 1,4];
         const actual = findKthLargest(theArray, 5);
-        console.log('actual', theArray)
+        // console.log('actual', theArray)
         expect(actual).toEqual(4);
     });
 });

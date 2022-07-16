@@ -6,7 +6,7 @@ const rightSideViewBFS = root => {
     const result = [];
     const queue = [root];
     while (queue.length) {
-        console.log('queue.length is', queue.length)
+        // console.log('queue.length is', queue.length)
         let length = queue.length;
         let count = 0;
         let currentNode;

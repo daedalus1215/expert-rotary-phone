@@ -16,6 +16,6 @@ describe('', () => {
         const root = new TreeNode();
         root.insert([1, 1, 1, 1, null, null, null, 1, null, null, null, 1, null, null]);
 
-        console.log(maxDepth(root, 0));
+        // console.log(maxDepth(root, 0));
     });
 });

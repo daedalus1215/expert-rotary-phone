@@ -28,7 +28,7 @@ describe('levelOrderBinaryTree', () => {
         const root = new TreeNode();
         root.insert([3, 6, 1, 9, 2, 4, 5, 8]);
         const actual = levelOrderBinaryTree(root);
-        console.log('root', root);
-        console.log('actual', actual);
+        // console.log('root', root);
+        // console.log('actual', actual);
     });
 });
