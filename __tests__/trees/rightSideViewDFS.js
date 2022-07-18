@@ -1,4 +1,4 @@
-const TreeNode = require("../../src/TreeNode");
+const { TreeNode } = require('../../src/TreeNode');
 
 const rightSideViewDFS = root => {
     const results = [];

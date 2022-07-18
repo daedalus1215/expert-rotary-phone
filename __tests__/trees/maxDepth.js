@@ -1,4 +1,4 @@
-const TreeNode = require('../../src/TreeNode');
+const { TreeNode } = require('../../src/TreeNode');
 
 const maxDepth = (node, currentDepth) => {
     if (!node) {

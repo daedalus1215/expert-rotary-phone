@@ -24,5 +24,17 @@ class TreeNode {
         return this;
     }
 }
+const getLeft = idx => (idx * 2) + 1;
+const getRight = idx => (idx * 2) + 2;
+const swapper = (array, left, right) => {
+    const temp = array[left];
+    array[left] = array[right];
+    array[right] = temp;
+}
 
-module.exports = TreeNode;
+module.exports = {
+    TreeNode,
+    getLeft,
+    getRight,
+    swapper
+};
