@@ -26,6 +26,8 @@ class TreeNode {
 }
 const getLeft = idx => (idx * 2) + 1;
 const getRight = idx => (idx * 2) + 2;
+const getParent = idx => Math.floor((idx - 1) / 2);
+
 const swapper = (array, left, right) => {
     const temp = array[left];
     array[left] = array[right];
@@ -36,5 +38,6 @@ module.exports = {
     TreeNode,
     getLeft,
     getRight,
+    getParent,
     swapper
 };
