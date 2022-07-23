@@ -37,7 +37,7 @@ const countIsland = (matrix) => {
                         const checkCol = newCol + directions[i][1];
                         console.log('checkRow', checkRow)
                         console.log('checkCol', checkCol)
-                        if (checkRow !== -1 && checkCol !== -1 && checkRow < matrix.length && checkCol < matrix[0].length ) {
+                        if (checkRow !== -1 && checkCol !== -1 && checkRow < matrix.length && checkCol < matrix[0].length) {
                             console.log('matrix', matrix[checkRow][checkCol])
                             if (matrix[checkRow][checkCol] === 1) {
                                 queue.push([checkRow, checkCol]);
@@ -63,5 +63,15 @@ describe('__tests__/matrix/countIsland.js', () => {
             [0, 0, 0, 1, 1]
         ];
         expect(countIsland(matrix)).toEqual(2);
+    });
+
+    it('should...', () => {
+        const matrix = [
+            [0, 1, 0, 1, 0],
+            [1, 0, 1, 0, 1],
+            [0, 1, 1, 1, 0],
+            [1, 0, 1, 0, 1]
+        ];
+        expect(countIsland(matrix)).toEqual(7);
     });
 });
