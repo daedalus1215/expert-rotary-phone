@@ -35,10 +35,10 @@ const countIsland = (matrix) => {
                     for (let i = 0; i < directions.length; i++) {
                         const checkRow = newRow + directions[i][0];
                         const checkCol = newCol + directions[i][1];
-                        console.log('checkRow', checkRow)
-                        console.log('checkCol', checkCol)
+                        // console.log('checkRow', checkRow)
+                        // console.log('checkCol', checkCol)
                         if (checkRow !== -1 && checkCol !== -1 && checkRow < matrix.length && checkCol < matrix[0].length) {
-                            console.log('matrix', matrix[checkRow][checkCol])
+                            // console.log('matrix', matrix[checkRow][checkCol])
                             if (matrix[checkRow][checkCol] === 1) {
                                 queue.push([checkRow, checkCol]);
 
