@@ -27,8 +27,8 @@ const roomsAndGates = m => {
 }
 
 const dfs = (matrix, step, row, col) => {
-    console.log('dfs - step', step)
-    console.log('dfs - row', row)
+    // console.log('dfs - step', step)
+    // console.log('dfs - row', row)
 
     if (row >= 0
         && row < matrix.length
