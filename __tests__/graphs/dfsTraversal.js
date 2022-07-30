@@ -1,40 +1,29 @@
-const dfsTraversal = (graph) => {
-    const seen = { 0: true } // s = o(rows)
-    const values = [0];      // s = o(row * col)
-    for (let i = 0; i < graph.length; i++) { // t = o(rows)
-        const connections = graph[i];
-        dfs(connections, seen, values, graph);
+
+
+const dfsTraversal = (n, managers, timeInterval) => {
+    const adjList = managers.map(() => []);
+    for (let employee = 0; employee < managers.length; employee++) {
+        if (managers[employee] === -1) continue;
+        adjList[managers[employee]].push(employee);
     }
-    return values;
+    return dfs(n, adjList, timeInterval);
 };
 
-const dfs = (vertex, seen, values, graph) => {
-    for (let i = 0; i < vertex.length; i++) { // t = o(col)
-        if(seen[vertex[i]]) {
-            continue;
-        }
-        values.push(vertex[i]);
-        seen[vertex[i]] = true;
-        dfs(graph[vertex[i]], seen, values, graph)
+const dfs = (index, adjList, timeInterval) => {
+    if (adjList[index].length == 0) return 0;
+    const employees = adjList[index];
+    let max = 0;
+    for (let i = 0; i < employees.length; i++) {
+        max = Math.max(max, dfs(employees[i], adjList, timeInterval))
     }
+    return max + timeInterval[index];
 };
 
 describe('__tests__/graphs/dfsTraversal', () => {
     it('dfsTraversal', () => {
-        const graph = [
-            [1, 3],
-            [0],
-            [3, 8],
-            [0, 2, 4, 5],
-            [3, 6],
-            [3],
-            [4, 7],
-            [6],
-            [2]
-        ];
-        expect(dfsTraversal(graph)).toEqual([
-            0, 1, 3, 2, 8,
-            4, 6, 7, 5
-        ]);
+        const headOfCompany = 4;
+        const timeInterval = [0, 0, 4, 0, 7, 3, 6, 0];
+        const managers = [2, 2, 4, 6, -1, 4, 4, 5];
+        expect(dfsTraversal(headOfCompany, managers, timeInterval)).toEqual(13);
     });
 });
