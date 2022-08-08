@@ -4,8 +4,8 @@ const canFinish = (n, courses) => {
         .map(() => []);
         
     for (let i = 0; i < courses.length; i++) {
-        console.log('courses', courses[i]);
-        console.log('courses index', i);
+        // console.log('courses', courses[i]);
+        // console.log('courses index', i);
         adjList[courses[i][1]].push(courses[i][0]);
     }
 
