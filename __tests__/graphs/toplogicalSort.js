@@ -5,9 +5,9 @@ const topologicalSort = (n, prereq) => {
     for (let i = 0; i < prereq.length; i++) {
         const dep = prereq[i][0];
         const dee = prereq[i][1];
-        console.log('adjList', adjList)
-        console.log('dep', dep)
-        console.log('dee', dee)
+        // console.log('adjList', adjList)
+        // console.log('dep', dep)
+        // console.log('dee', dee)
         adjList[dee].push(dep);
         indegrees[dep]++;
     }
