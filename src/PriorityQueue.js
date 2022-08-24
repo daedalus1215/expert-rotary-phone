@@ -1,3 +1,4 @@
+//@TODO: Make sure we cannot add duplicates. This is important for Dijkstras
 class PriorityQueue {
     constructor(comparator = (a, b) => a > b) {
         this._heap = [];
