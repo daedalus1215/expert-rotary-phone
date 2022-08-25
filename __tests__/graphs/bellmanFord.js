@@ -11,9 +11,7 @@ const bellmanFord = (k, times, n) => {
             const source = times[i][0],
                 target = times[i][1],
                 weight = times[i][2];
-            console.log('source', source)
             const currentWeight = distances[source - 1] + weight;
-            console.log('currentWeight', currentWeight)
 
             if (currentWeight < distances[target - 1]) {
                 distances[target - 1] = currentWeight;
@@ -21,9 +19,7 @@ const bellmanFord = (k, times, n) => {
         }
         count++;
     }
-    console.log('distances', distances)
     const maxValue = Math.max(...distances);
-    console.log('maxValue', maxValue)
     return maxValue === Infinity ? -1 : maxValue;
 };
 
