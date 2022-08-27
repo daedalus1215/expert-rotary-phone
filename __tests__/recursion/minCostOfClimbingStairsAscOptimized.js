@@ -1,5 +1,4 @@
 const minCostOfClimbingStairsAscOptimized = (steps) => {
-    const dp = [];
     const length = steps.length;
     if (length === 0) return 0;
     if (length === 1) return steps[0];
