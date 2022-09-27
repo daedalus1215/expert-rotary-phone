@@ -11,7 +11,7 @@ function diagonalDifference(arr) {
 }
 
 
-describe('binarySearch', () => {
+describe('diagnolDifference', () => {
     it('should...', () => {
         expect(diagonalDifference([
             [11, 2, 4],
