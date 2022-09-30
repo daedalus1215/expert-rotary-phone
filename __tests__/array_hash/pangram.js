@@ -1,7 +1,5 @@
 
 const pangrams = (s) => {
-    // Write your code here
-    
     s = s.split(' ').join('');
     const map = {};
     let count = 0;
