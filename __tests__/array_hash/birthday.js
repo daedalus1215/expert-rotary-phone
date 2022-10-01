@@ -15,9 +15,11 @@ const birthday = (nums, day, month) => {
     return count;
 }
 
-
 describe('birthday', () => {
-    it('', () => {
-        expect(birthday([2, 2, 1, 3, 2], 4, 2)).toEqual(2);
+    it('Two children want to share a bar. Each of the piece has an number on it. '
+        + 'Child a decides to share a contiguous segment of the bar: The length of the segment matches. '
+        + 'Other child\'s birth month, and, The sum of the integers on the squares is equal to his birth day.', () => {
+        expect(birthday([2, 2, 1, 3, 2], 4, 2))
+        .toEqual(2);
     });
 });
