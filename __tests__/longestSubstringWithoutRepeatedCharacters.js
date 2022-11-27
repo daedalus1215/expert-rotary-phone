@@ -4,28 +4,29 @@
  * 
  * @param {string} s the string we are going to find the longest consecutive unqiue string
  */
-const longestSubstringWithoutRepeatedCharactersBruteForce = (s) => {
-    if (s.length <= 1) {
-        return s.length;
-    }
+const longestSubstringWithoutRepeatedCharactersBruteForce = (wholeString) => {
+    if (wholeString.length === 0) return 0;
 
-    let index = 0, count = 0, start = 0, hash = {};
+    let right = 0;
+    let tots = 1;
+    for (let left = 0; left < wholeString.length; left++) {
+        const seen = { [wholeString[left]]: true };
+        right = left + 1;
+        let count = 1;
 
-    while (start < s.length) {
-        if (hash[s[index]] !== 1) {
-            hash[s[index]] = 1;
-
-            count = Math.max(Object.keys(hash).length - 1, count);
-
-            index++;
-        } else {
-            hash = {};
-            start++;
-            index = start;
+        while (right < wholeString.length) {
+            if (seen[wholeString[right]]) {
+                tots = count > tots ? count : tots;
+                break;
+            }
+            seen[wholeString[right]] = true;
+            count++;
+            right++;
         }
+        tots = count > tots ? count : tots;
     }
 
-    return count;
+    return tots; 
 };
 
 const longestSubstringWithoutRepeatedCharactersPerformance = (s) => {
