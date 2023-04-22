@@ -37,7 +37,7 @@ TimeLimitedCache.prototype.get = function (key) {
  */
 TimeLimitedCache.prototype.count = function () {
     let count = 0
-    for (let key in this.map) { // this is better performance than say Object.keys()
+    for (let key in this.map) { // this is better performance than say Object.keys(). Reasons is because Object.keys() creates a whole new array: https://stackoverflow.com/questions/126100/how-to-efficiently-count-the-number-of-keys-properties-of-an-object-in-javascrip
             if (this.map[key][1] < Date.now()) { // not sure if we needed to do array, refactored to array over object, but still did not give us the performance we needed.
                 delete this.map[key];
             } else {
