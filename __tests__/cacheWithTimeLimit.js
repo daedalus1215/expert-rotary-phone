@@ -37,8 +37,8 @@ TimeLimitedCache.prototype.get = function (key) {
  */
 TimeLimitedCache.prototype.count = function () {
     let count = 0
-    for (let key in this.map) {
-            if (this.map[key][1] < Date.now()) {
+    for (let key in this.map) { // this is better performance than say Object.keys()
+            if (this.map[key][1] < Date.now()) { // not sure if we needed to do array, refactored to array over object, but still did not give us the performance we needed.
                 delete this.map[key];
             } else {
                 count++
