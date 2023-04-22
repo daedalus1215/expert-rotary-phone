@@ -15,12 +15,15 @@
         const len2 = expandAroundCenter(s, i, i + 1);
         const max = Math.max(len, len2);
         if (max > end - start) {
-            start = i - (max - 1) / 2;
-            end = i + max / 2;
+            console.log('max', max);
+            start = i - Math.floor((max - 1) / 2);
+            console.log('start', start);
+            end = Math.floor(i + max / 2);
+            console.log('end', end);
         }
     }
+
     return s.substring(start, end + 1);
-    
 };
 
 const expandAroundCenter = (s, left, right) => {
@@ -36,7 +39,10 @@ const expandAroundCenter = (s, left, right) => {
 
 
 describe('longestPalindrome', () => {
+    // it('longestPalindrome', () => {
+    //     expect(longestPalindrome('babad')).toEqual('aba');
+    // });
     it('longestPalindrome', () => {
-        expect(longestPalindrome('babad')).toEqual('aba');
+        expect(longestPalindrome('cbbd')).toEqual('bb');
     });
 });
