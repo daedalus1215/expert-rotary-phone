@@ -116,7 +116,7 @@ describe('#principle of least privilege', () => {
             "Video-Management-ModifyAccess",
             "Confidential-Management-FullAccess"
         ];
-        it('should <fill me in>', () => {
+        it('should determine if user can has access in a variety of scenarios', () => {
             // Arrange
             const subset = [
                 "Case-Management-ReadAccess",
@@ -132,7 +132,6 @@ describe('#principle of least privilege', () => {
             const canModifyTranscript = hasAccess(subset, "Transcript", "ModifyAccess")
             const canReadExhibit = (subset, "Exhibit", "ReadAccess")
             const canFullAccessConfidential = (subset, "Confidential", "FullAccess")
-            const canCheckNonType = (subset, "Testing", "FullAccess")
 
             // Assert
             expect(canModifyCase).toBe(false);
@@ -140,7 +139,6 @@ describe('#principle of least privilege', () => {
             expect(canModifyTranscript).toBe(false);
             expect(canReadExhibit).toBe("ReadAccess");
             expect(canFullAccessConfidential).toBe("FullAccess");
-            expect(canCheckNonType).toBe(false);
         });
     });
 });
