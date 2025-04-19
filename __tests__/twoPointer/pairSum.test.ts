@@ -26,7 +26,7 @@ const pairSumBruteForce = (input: number[], target: number) => {
   }
 };
 
-const pairSum = (inputs: number[], target: number) => {
+const pairSum2Pointer = (inputs: number[], target: number) => {
   if (!inputs) {
     return [];
   }
@@ -73,7 +73,7 @@ describe("pairSum", () => {
     });
   });
 
-  describe("#pairSum", () => {
+  describe("#pairSum2Pointer", () => {
     describe("given a valid array with a valid target", () => {
       it("should return the appropriate indexes", () => {
         // Arrange
@@ -82,7 +82,7 @@ describe("pairSum", () => {
         const expected = [2, 3];
 
         // Act
-        const actual = pairSum(input, target);
+        const actual = pairSum2Pointer(input, target);
 
         // Assert
         expect(actual).toEqual(expected);
